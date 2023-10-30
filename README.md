@@ -6,9 +6,6 @@ Repositório contendo o projeto do jogo campo minado referente a matéria de pro
 
 ---
 
-> [NOTE]
-> Será utilizado C++ para o desenvolvimento do projeto, e para a interface gráfica o QT.
-
 #### Diagrama UML:
 
 
