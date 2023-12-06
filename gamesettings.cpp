@@ -50,7 +50,7 @@ void GameSettings::mousePressEvent(QGraphicsSceneMouseEvent *event)
     m_x = static_cast<int>(clickedPos.x()) / m_game.w;
     m_y = static_cast<int>(clickedPos.y()) / m_game.w;
 
-    if (m_game.grid[m_x][m_y] == 9) {
+    if (m_game.grid[m_x][m_y] == 9 && button == Qt::LeftButton) {
             GameOverDialog gameOverDialog;
             gameOverDialog.exec();
         }
