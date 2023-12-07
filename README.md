@@ -24,16 +24,8 @@ Acima da área de jogo, possui um emoji sorrindo, ao ser apertado irá realizar 
 #### Começando com os Diagramas, de classe e casos de uso.
 
 ##### Diagrama de classes:
-![image](https://github.com/Fsavellino/Project-POO/assets/72568537/cf54aa43-64e8-48a3-8e6a-0358db2cd266)
+
+![DiagramaClasses MP](https://github.com/Fsavellino/Project-POO/assets/72568537/43e2b8c8-01f6-4158-b6c3-5ef94c26ba78)
 
 ##### Diagrama de casos de uso:
-
-
-
-
-
-
-
-
-
 
