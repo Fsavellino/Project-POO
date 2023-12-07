@@ -50,20 +50,10 @@ void GameSettings::mousePressEvent(QGraphicsSceneMouseEvent *event)
     m_x = static_cast<int>(clickedPos.x()) / m_game.w;
     m_y = static_cast<int>(clickedPos.y()) / m_game.w;
 
-    if (m_game.grid[m_x][m_y] == 9 && button == Qt::LeftButton) {
-            GameOverDialog gameOverDialog;
-            gameOverDialog.exec();
-        }
-
-    /*//Determina a função para cada tipo de clique (Esquerdo/Direito)
-    if(button == Qt::LeftButton)
-    {
-        m_game.sgrid[m_x][m_y] = m_game.grid[m_x][m_y];
-        checkResetClick(m_x, m_y);
-    }*/
     if(button == Qt::LeftButton) {
         // Se a célula clicada for vazia, revele as células vazias adjacentes
-        if (m_game.grid[m_x][m_y] == 0) {
+        if (m_game.grid[m_x][m_y] == 0 && m_game.sgrid[m_x][m_y] == -1) {
+            //m_game.sgrid[m_x][m_y] = m_game.grid[m_x][m_y];
             revealEmptyCells(m_x, m_y);
         } else {
             // Se a célula não for vazia, apenas revele essa célula
@@ -71,9 +61,13 @@ void GameSettings::mousePressEvent(QGraphicsSceneMouseEvent *event)
             checkResetClick(m_x, m_y);
         }
     }
-    else if(button == Qt::RightButton)
-    {
+    else if(button == Qt::RightButton){
         m_game.sgrid[m_x][m_y] = 11;
+    }
+
+    if (m_game.grid[m_x][m_y] == 9 && button == Qt::LeftButton) {
+        GameOverDialog gameOverDialog;
+        gameOverDialog.exec();
     }
     QGraphicsScene::mousePressEvent(event);
 }
@@ -131,7 +125,21 @@ void GameSettings::revealEmptyCells(int x, int y) {
         return;
     }
 
-    // Criar uma fila para realizar a busca em largura
+    m_game.sgrid[x][y] = m_game.grid[x][y];
+
+    for (int i = -1; i <= 1; ++i) {
+        for (int j = -1; j <= 1; ++j) {
+            int newX = x + i;
+            int newY = y + j;
+
+            // Evitar a recursão na célula atual
+            if (newX != x || newY != y) {
+                revealEmptyCells(newX, newY);
+            }
+        }
+      }
+    /*
+    // Cria uma fila para realizar a busca em largura
     std::queue<std::pair<int, int>> cellsQueue;
     cellsQueue.push({x, y});
 
@@ -158,5 +166,5 @@ void GameSettings::revealEmptyCells(int x, int y) {
                 }
             }
        }
-   }
+    }*/
 }
