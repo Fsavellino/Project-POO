@@ -29,3 +29,5 @@ Acima da área de jogo, possui um emoji sorrindo, ao ser apertado irá realizar 
 
 ##### Diagrama de casos de uso:
 
+![Casos de uso](https://github.com/Fsavellino/Project-POO/assets/72568537/a26731c9-7dd8-4c02-afd3-de86bbcde247)
+
