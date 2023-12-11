@@ -62,7 +62,9 @@ void GameSettings::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
     }
     else if(button == Qt::RightButton){
-        m_game.sgrid[m_x][m_y] = 11;
+        if(m_game.sgrid[m_x][m_y] == 11){
+            m_game.sgrid[m_x][m_y] = 10;
+        }else m_game.sgrid[m_x][m_y] = 11;
     }
 
     if (m_game.grid[m_x][m_y] == 9 && button == Qt::LeftButton) {
